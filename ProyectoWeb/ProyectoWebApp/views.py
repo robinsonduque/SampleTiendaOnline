@@ -1,14 +1,11 @@
 from django.shortcuts import render, HttpResponse
 
+
 # Create your views here.
 
 
 def inicio(request):
     return render(request, "ProyectoWebApp/inicio.html")
-
-
-def servicios(request):
-    return render(request, "ProyectoWebApp/servicios.html")
 
 
 def tienda(request):
@@ -21,3 +18,4 @@ def blog(request):
 
 def contacto(request):
     return render(request, "ProyectoWebApp/contacto.html")
+ 

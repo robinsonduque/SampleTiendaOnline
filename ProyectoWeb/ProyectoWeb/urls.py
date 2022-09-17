@@ -24,6 +24,7 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("webApp/", include("ProyectoWebApp.urls")),
     path("webApp/", include("ProyectoWebServicios.urls")),
+    path("webApp/", include("ProyectoWebBlog.urls")),
 ]
 
 # Static files addition to display images:

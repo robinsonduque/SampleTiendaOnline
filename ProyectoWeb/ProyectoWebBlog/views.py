@@ -1,4 +1,5 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render
+from django.http import HttpResponse
 from .models import Categoria, Post
 
 
@@ -26,3 +27,32 @@ def blog(request, categoria_id="all"):
         "blog/blog.html",
         {"categorias": categorias, "posts": posts, "filtro": categoriaFiltrada},
     )
+
+
+import subprocess
+from subprocess import check_output
+import traceback
+import sys
+
+
+def evaluarCodigo(request):
+    try:
+        res = check_output(
+            [
+                "/Applications/Racket v7.9/bin/racket",
+                "/Applications/Racket v7.9/bin/hello.rkt",
+                "-n",
+                "x",
+            ],
+            timeout=5,
+            stderr=subprocess.STDOUT,
+        )
+    except subprocess.CalledProcessError as e:
+
+        res = (
+            "Error:"
+            + str(e.output).replace("\\n", "<br>")
+            + "<br> or Timeout after 5 seconds"
+        )
+
+    return HttpResponse("%s" % res)

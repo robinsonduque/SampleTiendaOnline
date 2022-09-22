@@ -22,10 +22,10 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("webApp/", include("ProyectoWebApp.urls")),
-    path("webApp/", include("ProyectoWebServicios.urls")),
-    path("webApp/", include("ProyectoWebBlog.urls")),
-    path("webApp/", include("ProyectoWebContacto.urls")),
+    path("", include("ProyectoWebApp.urls")),
+    path("", include("ProyectoWebServicios.urls")),
+    path("", include("ProyectoWebBlog.urls")),
+    path("", include("ProyectoWebContacto.urls")),
 ]
 
 # Static files addition to display images:

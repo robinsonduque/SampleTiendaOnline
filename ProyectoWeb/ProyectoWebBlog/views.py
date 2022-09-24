@@ -43,6 +43,8 @@ def evaluarCodigo(request):
                 "/Applications/Racket v7.9/bin/hello.rkt",
                 "-n",
                 "x",
+                "-a",
+                "yyy",
             ],
             timeout=5,
             stderr=subprocess.STDOUT,

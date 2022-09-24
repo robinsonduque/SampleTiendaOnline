@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect
 from .forms import ContactoForm
+from django.core.mail import EmailMessage
+from django.conf import settings
 
 
 # Create your views here.
@@ -11,8 +13,21 @@ def contacto(request):
         if formulario.is_valid():
             nombre = request.POST.get("nombre")
             email = request.POST.get("email")
-            message = request.POST.get("message")
+            message = request.POST.get("mensaje")
+            recipient_list = ["robinson.duque@correounivalle.edu.co"]
 
-            return redirect("/contacto/?valido")
+            email = EmailMessage(
+                "Mensaje de la app de Django",
+                "El usuario con nombre {} y la direccion {} dice: {}".format(
+                    nombre, email, message
+                ),
+                "",
+                recipient_list,
+            )
+            try:
+                email.send()
+                return redirect("/contacto/?valido")
+            except:
+                return redirect("/contacto/?NOvalido")
 
     return render(request, "contacto/contacto.html", {"formulario": formulario})

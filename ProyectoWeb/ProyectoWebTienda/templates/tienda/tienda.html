@@ -1,8 +1,60 @@
 {% extends "ProyectoWebApp/base.html" %}
 
 {% block content %}
-<div class="container-fluid">
-    <h1 class="mt-4">Tienda</h1>
+<nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+
+    <div class="container-fluid">
+        Filtrar Categoria: {{filtro.nombre}}
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
+                {% for cat in categorias %}
+
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url  'tiendaCategoria' cat.id %}">{{cat.nombre}}</a>
+                </li>
+
+                {% endfor %}
+
+                <li class="nav-item"><a class="nav-link" href="{% url  'tienda' %}">All</a></li>
+            </ul>
+        </div>
+    </div>
+
+</nav>
+<h1 class="mt-4">Productos</h1>
+
+
+
+<div class="container">
+
+
+    <div class="row">
+        {% for i in productos %}
+
+        <div class="col-md-3">
+            <div class="card">
+                {% if i.imagen %}
+                <img src="{{ i.imagen.url }}" width="100%" class="card-img-top">
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">{{ i.nombre }}</h5>
+
+                    <p class="card-text">
+                        {{i.precio}}
+                    <p>Disponible: {{ i.disponibilidad }}</p>
+                    </p>
+
+                </div>
+            </div>
+        </div>
+
+        {% endfor %}
+    </div>
+
+
+
+
+
 
 </div>
 

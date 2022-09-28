@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     "ProyectoWebBlog",
     "ProyectoWebServicios",
     "ProyectoWebTienda",
+    "carro",
 ]
 
 MIDDLEWARE = [
@@ -67,6 +68,7 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                "carro.context_processors.totalProductos",  # se agregó este context para el carro
             ],
         },
     },

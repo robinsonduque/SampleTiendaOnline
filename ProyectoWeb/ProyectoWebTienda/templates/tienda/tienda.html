@@ -26,7 +26,11 @@
 
 
 <div class="container">
-
+    <div style="float: right;">
+        <p>
+            {%include 'carro/widget.html'%}
+        </p>
+    </div>
 
     <div class="row">
         {% for i in productos %}
@@ -43,7 +47,9 @@
                         {{i.precio}}
                     <p>Disponible: {{ i.disponibilidad }}</p>
                     </p>
-
+                </div>
+                <div class="card-footer text-center">
+                    <a href="{% url 'carro:agregarproducto' i.id %}" class="btn btn-success">Agregar al carro</a>
                 </div>
             </div>
         </div>

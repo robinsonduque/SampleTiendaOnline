@@ -4,9 +4,8 @@ class Carro:
         self.session = request.session
         carro = self.session.get("carro")
         if not carro:
-            self.carro = self.session["carro"] = {}  # self.carro?
-        else:
-            self.carro = carro
+            carro = self.session["carro"] = {}
+        self.carro = carro
 
     def agregar(self, producto):
         if str(producto.id) not in self.carro.keys():
@@ -18,12 +17,7 @@ class Carro:
                 "imagen": producto.imagen.url,
             }
         else:
-            self.carro[producto.id]["cantidad"] += 1
-            # for key, value in self.carro.items():
-            #   if key==str(producto.id):
-            #      value["cantidad"] = value["cantidad"]+1
-            #      break
-
+            self.carro[str(producto.id)]["cantidad"] += 1
         self.guardar_carro()
 
     def guardar_carro(self):
@@ -37,15 +31,12 @@ class Carro:
             self.guardar_carro()
 
     def restar_producto(self, producto):
-        self.carro[producto.id]["cantidad"] -= 1
-        # for key, value in self.carro.items():
-        #   if key==str(producto.id):
-        #      value["cantidad"] = value["cantidad"]-1
-        #      if value["cantidad"]<1:
-        #         self.eliminar_producto(producto)
-        #      break
+        if self.carro[str(producto.id)]["cantidad"] > 1:
+            self.carro[str(producto.id)]["cantidad"] -= 1
+        else:
+            self.eliminar_producto(producto)
         self.guardar_carro()
 
-    def limpiar_carro(sef, producto):
+    def limpiar_carro(self, producto):
         self.session["carro"] = {}
         self.session.modified = True

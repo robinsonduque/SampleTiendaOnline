@@ -43,6 +43,12 @@
                         data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation"><span
                             class="navbar-toggler-icon"></span></button>
+                    {%if user.is_authenticated %}
+                    Hola {{user.username}}, <a href="{% url 'autenticacion:cerrar_sesion' %}">Cerrar sesión</a>
+                    {% else %}
+                    <a href="{% url 'autenticacion:iniciar_sesion' %}">Inicia sesión </a>
+                    | <a href="{% url 'autenticacion:registrar' %}">Registrate</a>
+                    {% endif %}
 
                 </div>
             </nav>

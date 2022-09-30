@@ -29,15 +29,16 @@
                 {% if form.errors %}
 
                 {% for key,value in form.errors.items %}
-                {{ value|escape }}
+                <p style="color: red;">
+                    {{ value.as_text|escape }}
+                </p>
                 {% endfor %}
 
                 {% endif %}
-
                 <div class="form-group row p-3">
 
                     <div class="col-sm-12 " style="text-align: center;">
-                        <input type=" submit" class="btn btn-success" value="Iniciar sesión">
+                        <input type="submit" class="btn btn-success" value="Iniciar sesión">
                     </div>
                 </div>
 

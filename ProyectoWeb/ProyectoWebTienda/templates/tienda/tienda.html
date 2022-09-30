@@ -26,11 +26,19 @@
 
 
 <div class="container">
+    {% if user.is_authenticated %}
     <div style="float: right;">
         <p>
             {%include 'carro/widget.html'%}
         </p>
     </div>
+    {% else %}
+    <div style="float: right;">
+        <p>
+            Por favor iniciar sesión para agregar productos.
+        </p>
+    </div>
+    {% endif %}
 
     <div class="row">
         {% for i in productos %}

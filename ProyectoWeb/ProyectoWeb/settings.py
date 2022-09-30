@@ -133,6 +133,9 @@ STATIC_URL = "/static/"
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
+# Para redireccionar a usuarios sin loguearse donde la vista lo requiera
+LOGIN_URL = "/iniciar_sesion/"
+
 
 # NEW LINE TO SEND E-MAILS
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"

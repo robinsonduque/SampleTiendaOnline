@@ -29,6 +29,7 @@ urlpatterns = [
     path("", include("ProyectoWebTienda.urls")),
     path("", include("carro.urls")),
     path("", include("autenticacion.urls")),
+    path("", include("pedidos.urls")),
 ]
 
 # Static files addition to display images:

@@ -54,4 +54,4 @@ def enviar_mail(**kwargs):
     from_email = settings.EMAIL_HOST_USER
     to = kwargs.get("email")
     # print(mensaje_texto)
-    send_mail(asunto, mensaje_texto, from_email, [to], html_message=mensaje)
+    # send_mail(asunto, mensaje_texto, from_email, [to], html_message=mensaje)
